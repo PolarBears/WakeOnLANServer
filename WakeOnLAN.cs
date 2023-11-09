@@ -51,15 +51,15 @@ public class WakeOnLAN
     /// <summary>
     /// 匹配 01:23:45:67:89:ab 或 01-23-45-67-89-ab 格式的MAC地址
     /// </summary> 
-    private static Regex Regex_A = new Regex(@"(?:^|\s)((?:[a-fA-F0-9]{1,2}[:-]){5}[?:a-fA-F0-9]{1,2})(?:$|\s|\(|\[)");
+    private static Regex Regex_A = new(@"(?:^|\s|\(|\)|（|）|\[|\])((?:[a-fA-F0-9]{1,2}[:-]){5}[?:a-fA-F0-9]{1,2})(?:$|\s|\(|\)|（|）|\[|\])");
     /// <summary>
     /// 匹配 0123.4567.89ab 或 0123-4567-89ab 格式的MAC地址
     /// </summary>
-    private static Regex Regex_B = new Regex(@"(?:^|\s)((?:[a-fA-F0-9]{4}[\.-]){2}[a-fA-F0-9]{4})(?:$|\s|\(|\[)");
+    private static Regex Regex_B = new(@"(?:^|\s|\(|\)|（|）|\[|\])((?:[a-fA-F0-9]{4}[\.-]){2}[a-fA-F0-9]{4})(?:$|\s|\(|\)|（|）|\[|\])");
     /// <summary>
     /// 匹配 0123456789ab 格式的MAC地址
     /// </summary> 
-    private static Regex Regex_C = new Regex(@"(?:^|\s)([a-fA-F0-9]{12})(?:$|\s|\(|\[)");
+    private static Regex Regex_C = new(@"(?:^|\s|\(|\)|（|）|\[|\])([a-fA-F0-9]{12})(?:$|\s|\(|\)|（|）|\[|\])");
 
     /// <summary>
     /// 返回所有匹配到的MAC地址
