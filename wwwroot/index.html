@@ -6,11 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/bootstrap-5.3.2-dist/css/bootstrap.css" rel="stylesheet">
     <script src="/bootstrap-5.3.2-dist/js/bootstrap.bundle.js"></script>
+    <script src="/jquery-3.7.1.js"></script>
     <title>WakeOnLAN</title>
 </head>
 
 <body>
+    <div class="container">
+        <ul class="nav justify-content-center m-2">
+            <li class="nav-item">
+                <h3>WakeOnLAN</h3>
+            </li>
+        </ul>
 
+        <form action="" method="POST" id="form" class="text-center">
+            <textarea class="form-control" id="text" rows="12" name="text" required autofocus></textarea>
+            <div class="mb-3 row">
+                <label for="inputPassword" class="col-sm-2 col-form-label mb-2 mt-2">VLAN ID</label>
+                <div class="col-sm-3">
+                    <input type="number" id="vlan" min="0" max="4094" placeholder="可空" class="form-control mb-2 mt-2">
+                </div>
+                <div class="col-sm-3">
+                    <button type="submit" class="btn btn-primary mb-2 mt-2" id="Run">执行</button>
+                </div>
+            </div>
+        </form>
+
+        <div id="resultCount">
+        </div>
+        <div class="row" id="showData">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('text').placeholder = "MAC地址格式：\n01:23:45:67:89:ab\n01-23-45-67-89-ab\n0123-4567-89ab\n0123.4567.89ab\n0123456789ab\n\n支持在文本内自动提取以上格式的MAC地址";
+
+        /* attach a submit handler to the form */
+        $("#form").submit(function (event) {
+
+            /* stop form from submitting normally */
+            event.preventDefault();
+
+            var url = "/?vlan=" + $('#vlan').val()
+
+            /* Send the data using post with element id name and name2*/
+            var posting = $.post(url,
+                { text: $('#text').val() }
+            );
+        });
+    </script>
 </body>
 
 </html>
