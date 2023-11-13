@@ -1,0 +1,10 @@
+[Unit]
+Description=WakeOnLAN Server
+
+[Service]
+Type=notify
+WorkingDirectory=/var/www/WakeOnLANServer
+ExecStart=/var/www/WakeOnLANServer/WakeOnLANServer
+
+[Install]
+WantedBy=multi-user.target

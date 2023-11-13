@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace WakeOnLANServer;
 
 public class Program
@@ -5,6 +7,8 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+
+        builder.Host.UseSystemd();
 
         builder.Services.AddControllers(); ;
         builder.Services.AddSingleton<DevicesInstance>();
